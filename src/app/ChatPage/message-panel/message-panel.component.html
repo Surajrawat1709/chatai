@@ -4,12 +4,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60vh;
+    height: 65vh;
     padding: 20px;
     gap: 20px;
   "
 >
-  <app-image-slider
+
+  <app-image-slider style="
+	display:flex;
+	flex-wrap:wrap;
+  justify-content: center;"
     [indicatorsVisible]="true"
     [animationSpeed]="50"
     [slides]="slides"

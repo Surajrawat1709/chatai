@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Message } from '../utility/constants';
+import { Message } from '../../utility/constants';
 import { ImageSliderComponent } from '../image-slider/image-slider.component';
 @Component({
   selector: 'app-message-panel',
@@ -74,27 +74,29 @@ export class MessagePanelComponent{
   }
   slides: any[] = [
     {
-      url: '../assets/images/AI1.jpeg',
+
+      url: '../assets/anime/character_1/posed_image_1.png',
       title: 'First slide',
       description: 'This is the first slide',
     },
     {
-      url: '/assets/images/AI2.jpeg',
+      url: '/assets/anime/character_1/posed_image_2.png',
       title: 'Second slide',
       description: 'This is the second slide',
     },
     {
-      url: '/assets/images/AI3.jpeg',
+      url: '/assets/anime/character_1/posed_image_3.png',
       title: 'Third slide',
       description: 'This is the third slide',
     },
     {
-      url: '/assets/images/AI4.jpeg',
+
+      url: '/assets/anime/character_2/posed_image_1 (2).png',
       title: 'Fourth slide',
       description: 'This is the fourth slide',
     },
     {
-      url: '/assets/images/AI5.jpeg',
+      url: '/assets/anime/character_2/posed_image_2 (2).png',
       title: 'Fifth slide',
       description: 'This is the fifth slide',
     },
