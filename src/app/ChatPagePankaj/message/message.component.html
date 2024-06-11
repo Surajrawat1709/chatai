@@ -1,0 +1,9 @@
+<section class="app-container">
+    <h1> the data is: {{ data }}</h1>
+    {{ console.log('----------------> Logging') }}
+    {{ console.log(res_from_api)}}
+    <app-header></app-header>
+    <app-message-panel [messages]="data" [loading]="loading"></app-message-panel>
+    <app-user-input (sendMessageEmitter)="getMessage($event)"></app-user-input>
+    
+</section>

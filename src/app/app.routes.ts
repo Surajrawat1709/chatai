@@ -4,6 +4,7 @@ import { LoginLayoutComponent } from './LoginPage/login-layout/login-layout.comp
 import { SelectCharacterComponent } from './select-character/select-character.component';
 import { MessagePanelComponent } from './ChatPage/message-panel/message-panel.component';
 import { MessageComponent } from './ChatPage/message/message.component';
+import { MessageComponent as MCP } from './ChatPagePankaj/message/message.component';
 export const routes: Routes = [{
   path:'',
   redirectTo : 'login',
@@ -19,7 +20,15 @@ export const routes: Routes = [{
 },
 {
   path:'selectCharacter',
-  component:SelectCharacterComponent
+  component: SelectCharacterComponent
+},
+{
+  path: 'chatpagepankaj',
+  component: MCP
+},
+{
+  path: 'api',
+  component: MCP
 },
 {
   path:'',

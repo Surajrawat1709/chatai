@@ -14,3 +14,8 @@ export interface OpenAIResponse {
   run_id: string,
   thread_id: string
 }
+
+
+export interface LLamaAIResponse {
+  content: string,
+}

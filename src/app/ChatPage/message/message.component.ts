@@ -9,6 +9,7 @@ import { Message, MESSAGE_TYPE,OpenAIResponse} from '../../utility/constants';
 import { v4 as uuidv4 } from 'uuid';
 import { OpenAIService } from '../../openai.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LlamaChatApiService } from '../../llama-chat-api.service';
 
 @Component({
   selector: 'app-message',
@@ -31,25 +32,25 @@ export class MessageComponent {
   data: Message[] = [];
   loading: boolean = false
 
-  constructor(private openaiService: OpenAIService) {}
-
+  //constructor(private openaiService: OpenAIService) {}
+  constructor(llamaservice: LlamaChatApiService) {}
   getMessage($event: string){
-    if(!this.loading){
-      let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
-      this.data = [...this.data].concat(messageObject)
-      this.loading = true;
+  //   if(!this.loading){
+  //     let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
+  //     this.data = [...this.data].concat(messageObject)
+  //     this.loading = true;
 
-      this.openaiService.QueryPrompt($event).subscribe(
-        (response: OpenAIResponse): void => {
-          messageObject = this.createMessage(response.content.replace(/【[0-9]*†source】/g, ''), MESSAGE_TYPE.ASSISTANT)
-          this.data = [...this.data].concat(messageObject)
-          this.loading = false;
-        })
-    }
-    else{
-      let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
-      this.data = [...this.data].concat(messageObject)
-    }
+  //     this.openaiService.QueryPrompt($event).subscribe(
+  //       (response: OpenAIResponse): void => {
+  //         messageObject = this.createMessage(response.content.replace(/【[0-9]*†source】/g, ''), MESSAGE_TYPE.ASSISTANT)
+  //         this.data = [...this.data].concat(messageObject)
+  //         this.loading = false;
+  //       })
+  //   }
+  //   else{
+  //     let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
+  //     this.data = [...this.data].concat(messageObject)
+  //   }
   }
 
   createMessage(content: string, type: MESSAGE_TYPE): Message{
