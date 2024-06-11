@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 //import { AppRoutingModule } from '../../app-routing.module';
 @Component({
   selector: 'app-login-layout',
   standalone: true,
-  //imports: [AppRoutingModule],
+  imports: [RouterOutlet],
   templateUrl: './login-layout.component.html',
   styleUrl: './login-layout.component.scss'
 })

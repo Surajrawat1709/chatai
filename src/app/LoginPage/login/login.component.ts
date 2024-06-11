@@ -46,7 +46,7 @@ export class LoginComponent {
       if(isUserPresent != undefined) {
         alert("User Found...");
         localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/selectCharacter');
       } else {
         alert("No User Found")
       }
