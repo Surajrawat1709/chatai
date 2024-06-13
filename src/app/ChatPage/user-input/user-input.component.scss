@@ -1,13 +1,14 @@
 .user-input-container{
   display: flex;
-  height: 50px;
+  height: 22px;
   align-items: center;
   justify-content: space-between;
-  background-color: #87cbe0;
+  background-color: #bf4aa8;
   padding: 10px;
+  margin-bottom: 0px;
 
   .input-textfield{
-      height: 40px;
+      height: 22px;
       outline: 0;
       border: none;
       width: 95%;
@@ -26,8 +27,8 @@
   .button{
       display: flex;
       align-items: center;
-      height: 45px;
-      width: 45px;
+      height: 35px;
+      width: 35px;
       border-radius: 50%;
       color: white;
       background-color: #007ca1;
@@ -37,7 +38,7 @@
       margin-right: 10px;
 
       span{
-          margin-left: 5px;
+          margin-left: 2px;
       }
   }
 

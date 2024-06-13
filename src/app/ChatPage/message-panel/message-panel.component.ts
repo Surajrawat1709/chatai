@@ -2,10 +2,12 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Input, ViewChild } from 
 import { CommonModule } from '@angular/common';
 import { Message } from '../../utility/constants';
 import { ImageSliderComponent } from '../image-slider/image-slider.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 @Component({
   selector: 'app-message-panel',
   standalone: true,
-  imports: [CommonModule,ImageSliderComponent],
+  imports: [CommonModule,ImageSliderComponent,MatButtonModule,MatCardModule],
   templateUrl: './message-panel.component.html',
   styleUrl: './message-panel.component.scss',
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
@@ -24,7 +26,7 @@ export class MessagePanelComponent{
 
   private _messages: Message[] = [];
 
-  userPath = "../../assets/user-path.png"
+  userPath = "../../assets/user-path.jpeg"
   avatarPath = "../../assets/bot-path.png"
 
   @Input()
@@ -35,7 +37,7 @@ export class MessagePanelComponent{
   @Input() set messages(data: Message[]) {
     this.updateData(data).then(() => {
       if(data.length){
-        this.scrollToBottom();
+       // this.scrollToBottom();
 
         if(this.toggle){
           this.audio.nativeElement.play();
@@ -75,7 +77,7 @@ export class MessagePanelComponent{
   slides: any[] = [
     {
 
-      url: '../assets/anime/character_1/posed_image_1.png',
+      url: '../assets/anime/character_1/img2.jpeg',
       title: 'First slide',
       description: 'This is the first slide',
     },
@@ -88,17 +90,6 @@ export class MessagePanelComponent{
       url: '/assets/anime/character_1/posed_image_3.png',
       title: 'Third slide',
       description: 'This is the third slide',
-    },
-    {
-
-      url: '/assets/anime/character_2/posed_image_1 (2).png',
-      title: 'Fourth slide',
-      description: 'This is the fourth slide',
-    },
-    {
-      url: '/assets/anime/character_2/posed_image_2 (2).png',
-      title: 'Fifth slide',
-      description: 'This is the fifth slide',
     },
   ];
 }

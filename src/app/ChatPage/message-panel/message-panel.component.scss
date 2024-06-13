@@ -1,35 +1,55 @@
+.container {
+  position: relative;
+}
 .message-panel-container {
+
+z-index: 2;
   padding: 12px;
   font-family: "Roboto";
   font-weight: 300;
-  max-height: 83dvh;
+height: 548px;
   overflow: auto;
   padding: 0px;
+  background-color: #161748;
 
+  // background-image: url("S:/Projects/ChatDiff/Frontend/chatdif/src/assets/Backgroud/back3.jpg");
 
-  .image-container{
-    justify-content: center;
-    
+.message-panel-container::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+   }
 
-  }
   .no-message-container {
-    background-color: #e0e0e0;
+    background-color: palegreen;
     width: fit-content;
     padding: 6px;
     border-radius: 6px;
     margin-right: auto;
     margin-left: auto;
-    
   }
 
   .message-inner-container {
     display: flex;
+    width: 400px;
+    border: 10px;
+    border-color: blue;
+    margin-top: 16px;
+    margin-left: 10px;
+   // background-color: blue;
 
     .message-container {
       display: flex;
+      width: fit-content;
+    //  background-color: palegreen;
 
       .assistant-message-style{
-        background-color: #e0f1ff !important;
+        background-color:  #ffb766;
+        width: fit-content;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 16px;
+        max-width: 1000px;
+        margin-right: 10px;
+        margin-top: 0px;
       }
 
       .avatar {
@@ -45,10 +65,11 @@
       }
 
       .message {
-        background-color: #ecf4d6;
+         background-color:#ffb766;
         width: fit-content;
         padding: 12px;
         border-radius: 6px;
+
         margin-bottom: 16px;
         max-width: 1000px;
         margin-right: 10px;
@@ -63,3 +84,13 @@
     right: 30px;
   }
 }
+ .image-panel-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Adjust as needed */
+  height: 0%; /* Adjust as needed */
+  z-index: 1; /* Ensure it's above the message panel */
+  /* Additional styles if needed */
+ }
+

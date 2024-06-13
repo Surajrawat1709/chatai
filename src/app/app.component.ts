@@ -18,7 +18,6 @@ import { PagesComponent } from './sidenav/pages/pages.component';
 import { MediaComponent } from './sidenav/media/media.component';
 import { SettingsComponent } from './sidenav/settings/settings.component';
 import { SelectCharacterComponent } from './select-character/select-character.component';
-import { MessageComponent } from './ChatPage/message/message.component';
 @Component({
   selector: 'app-root',
   standalone: true,
