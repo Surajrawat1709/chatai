@@ -14,7 +14,7 @@ export class SelectCharacterComponent {
   constructor(private router: Router){}
   onLogin() {
 
-        this.router.navigateByUrl('/chatpage');
+        this.router.navigateByUrl('/chatpagepankaj');
 
     }
   }
