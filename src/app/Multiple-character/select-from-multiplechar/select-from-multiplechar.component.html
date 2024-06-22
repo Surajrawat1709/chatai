@@ -1,0 +1,31 @@
+<section class="select-multiple">
+  @for (item of character; track $index) {
+  <mat-card class="generate-image">
+
+    <div class="card">
+
+        <img
+        mat-card-image
+        style="height: 100%; width: 100%; margin: 1px 10px 0px 4px;  border-radius: 2rem;"
+       
+        src={{item.image}}
+        alt="Photo of a Shiba Inu"/>
+
+      <div class="title">
+        <span>{{item.name}}</span>
+      </div>
+      <div class="size">
+        <span> {{item.Desc}} </span>
+
+      </div>
+
+      <div class="action">
+        <button class="cart-button" (click)="onLogin()">
+        Let's chat
+        </button>
+      </div>
+    </div>
+
+  </mat-card>
+}
+ </section>

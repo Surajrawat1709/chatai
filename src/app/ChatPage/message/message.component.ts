@@ -29,6 +29,19 @@ export class MessageComponent {
 
   constructor(private llamaservice: LlamaChatApiService) {}
 
+//   getMessage($event:string){
+//     if(!this.loading){
+//       let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
+//       this.data = [...this.data].concat(messageObject)
+//       this.loading = true
+//     this.llamaservice.getInitResponse().subscribe(
+//       (response:any):void=>{
+//         this.console.log(response.msg);
+//       }
+//     )
+//   }
+// }
+
   getMessage($event: string){
     if(!this.loading){
       let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)

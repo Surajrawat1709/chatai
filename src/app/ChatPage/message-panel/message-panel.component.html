@@ -1,63 +1,97 @@
 <section class="container">
-<section class="message-panel-container" >
-
-  @for (message of messages; track message.id) {
-      @if (message.sender ===  "user") {
-          <div class="message-inner-container" style="justify-content: flex-start; ">
-              <div class="message-container">
-
-                  <div class="avatar" style="background-image: url('{{userPath}}');"></div>
-                  <div class="message">
-                     <mat-card-content>
-                    <p>{{ message.content }}</p>
-                  </mat-card-content></div>
+  <section class="message-panel-container-cloud" #scrollframe>
+    @for (message of messages; track message.id) {
+      @if ( "user") {
+          <div class="message-inner-container-cloud" style="justify-content: flex-start;">
+              <div class="message-container-cloud">
+                  <div class="avatar" style="background-image: url('{{userPath}}')"></div>
+                  <!-- <div class="message-cloud">{{ message.content }}</div> -->
+                  <a class="codepen-button"><span>{{ message.content }}</span></a>
               </div>
           </div>
         } @else {
-          <div class="message-inner-container" style="justify-content: flex-end;  margin-left: 946px;"  >
+          <div class="message-inner-container-cloud" style="justify-content: flex-end;">
               <div class="message-container">
-                  <div class="assistant-message-style">  <mat-card-content>
-                    <p>{{ message.content }}</p>
-                  </mat-card-content></div>
+                  <div class="message assistant-message-style">{{ message.content }}</div>
                   <div class="avatar" style="background-image: url('{{avatarPath}}')"></div>
               </div>
           </div>
         }
-  } @empty {
-      <!-- <div class="no-message-container">No Messages</div> -->
   }
+  </section>
 
+  <section class="message-panel-container" #scrollframe>
+    @for (message of messages; track message.id) { @if (message.sender ===
+    "user") {
+    <div class="message-inner-container" style="justify-content: flex-start">
+      <div class="message-container">
+        <!-- <div class="avatar" style="background-image: url('{{userPath}}');"></div> -->
+        <div class="message">
+          <mat-card-content>
+            <!-- <p>{{ message.content }}</p> -->
+          </mat-card-content>
+        </div>
+      </div>
+    </div>
+    } @else {
+    <div
+      class="message-inner-container"
+      style="justify-content: flex-end; margin-left: 946px"
+    >
+      <div class="message-container">
+        <div class="assistant-message-style">
+          <mat-card-content>
+            <!-- <p>{{ message.content }}</p> -->
+          </mat-card-content>
+        </div>
+        <!-- <div class="avatar" style="background-image: url('{{avatarPath}}')"></div> -->
+      </div>
+    </div>
+    } } @empty {
+    <!-- <div class="no-message-container">No Messages</div> -->
+    }
 
-  <!-- @if (loading) {
+    <!-- @if (loading) {
       <div class="loading-icon">
           <img src="../../assets/images/AI1.jpeg" width="70" />
       </div>
   } -->
-  <audio #audio src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"></audio>
-  <audio #audioToggle src="https://assets.mixkit.co/active_storage/sfx/2925/2925-preview.mp3"></audio>
+    <audio
+      #audio
+      src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"
+    ></audio>
+    <audio
+      #audioToggle
+      src="https://assets.mixkit.co/active_storage/sfx/2925/2925-preview.mp3"
+    ></audio>
+  </section>
 
-</section>
+  <section class="image-panel-container">
+    <div
+      class="image-container"
+      style="
+        border-radius: 50%;
+        display: block;
 
-<section class="image-panel-container" >
-<div class="image-container" style=" border-radius: 50%;  display: block;
-
-margin-left: auto;
-margin-right: auto;
-width: 70%;">
-  <app-image-slider style="
-
-height: 100px;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  object-fit: contain;
- "
-    [indicatorsVisible]="true"
-    [animationSpeed]="50"
-    [slides]="slides"
-    [autoPlay]="false"
-    [autoPlaySpeed]="2000"
-  ></app-image-slider>
-</div>
-</section>
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+      "
+    >
+      <app-image-slider
+        style="
+          height: 100px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          object-fit: contain;
+        "
+        [indicatorsVisible]="true"
+        [animationSpeed]="50"
+        [slides]="slides"
+        [autoPlay]="false"
+        [autoPlaySpeed]="2000"
+      ></app-image-slider>
+    </div>
+  </section>
 </section>

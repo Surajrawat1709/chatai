@@ -25,6 +25,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "aws-sdk": "^2.1645.0",
     "openai": "^4.47.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
