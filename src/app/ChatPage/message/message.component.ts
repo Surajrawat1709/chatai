@@ -24,18 +24,24 @@ export class MessageComponent {
   title = 'exploring-angular';
   data: Message[] = [];
   loading: boolean = false
-  res_from_api: string = "hello"
+  res_from_api: string = "hello pankf"
   console = console
 
   constructor(private llamaservice: LlamaChatApiService) {}
 
   getMessage($event: string){
+    this.llamaservice.getInitResponse().subscribe(
+      (response: any):void => {
+        this.console.log("hello")
+        this.console.log(response.msg)
+      }
+    )
     if(!this.loading){
       let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
       this.data = [...this.data].concat(messageObject)
       this.loading = true
 
-      this.llamaservice.QueryPrompt($event).subscribe(
+      this.llamaservice.QueryPrompt($event, "suraj", "chutki").subscribe(
         (response: any):void => {
           messageObject = this.createMessage(response.response, MESSAGE_TYPE.ASSISTANT)
           this.data = [...this.data].concat(messageObject)

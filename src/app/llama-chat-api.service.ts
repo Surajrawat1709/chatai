@@ -15,8 +15,9 @@ export class LlamaChatApiService {
     return this.http.get(this.api_url)
   }
 
-  private url_for_msg = this.api_url + "/api/predict"
-  QueryPrompt(prompt: string){
+  url_for_msg = ""
+  QueryPrompt(prompt: string, username: string, anime: string){
+    this.url_for_msg = this.api_url + "/api/predict?username=${username}&animename=${anime}"
     return this.http.post(this.url_for_msg, { message: prompt})
   }
 
