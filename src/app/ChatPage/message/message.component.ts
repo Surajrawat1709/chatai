@@ -25,7 +25,7 @@ export class MessageComponent  {
   title = 'exploring-angular';
   data: Message[] = [];
   loading: boolean = false
-  res_from_api: string = "hello"
+  res_from_api: string = "hello pankf"
   console = console
 
   data1: string = '';
@@ -37,6 +37,12 @@ export class MessageComponent  {
   }
 
   getMessage($event: string){
+    this.llamaservice.getInitResponse().subscribe(
+      (response: any):void => {
+        this.console.log("hello")
+        this.console.log(response.msg)
+      }
+    )
     if(!this.loading){
       let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
       this.data = [...this.data].concat(messageObject)
