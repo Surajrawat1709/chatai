@@ -1,23 +1,32 @@
 <section class="container">
   <section class="message-panel-container-cloud" #scrollframe>
-    @for (message of messages; track message.id) {
-      @if ( "user") {
-          <div class="message-inner-container-cloud" style="justify-content: flex-start;">
-              <div class="message-container-cloud">
-                  <div class="avatar" style="background-image: url('{{userPath}}')"></div>
-                  <!-- <div class="message-cloud">{{ message.content }}</div> -->
-                  <a class="codepen-button"><span>{{ message.content }}</span></a>
-              </div>
-          </div>
-        } @else {
-          <div class="message-inner-container-cloud" style="justify-content: flex-end;">
-              <div class="message-container">
-                  <div class="message assistant-message-style">{{ message.content }}</div>
-                  <div class="avatar" style="background-image: url('{{avatarPath}}')"></div>
-              </div>
-          </div>
-        }
-  }
+    @for (message of messages; track message.id) { @if ( "user") {
+    <div
+      class="message-inner-container-cloud"
+      style="justify-content: flex-start"
+    >
+      <div class="message-container-cloud">
+        <div
+          class="avatar"
+          style="background-image: url('{{ userPath }}')"
+        ></div>
+        <div class="message-cloud">{{ message.content }}</div>
+      </div>
+    </div>
+    } @else {
+    <div
+      class="message-inner-container-cloud"
+      style="justify-content: flex-end"
+    >
+      <div class="message-container-cloud">
+        <div class="assistant-message-style-cloud">{{ message.content }}</div>
+        <div
+          class="avatar"
+          style="background-image: url('{{ avatarPath }}')"
+        ></div>
+      </div>
+    </div>
+    } }
   </section>
 
   <section class="message-panel-container" #scrollframe>

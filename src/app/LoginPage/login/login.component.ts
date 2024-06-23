@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LlamaChatApiService } from '../../llama-chat-api.service';
+import { SharedService } from '../../shared.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,12 +21,14 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private llamaservice: LlamaChatApiService
+    private llamaservice: LlamaChatApiService,
+    private sharedService: SharedService
   ) {}
 
   onRegister() {
-   // debugger;
    alert('Registration Success');
+   this.sharedService.changeData(this.signUpObj.name);
+   //console.log(this.signUpObj.name);
    this.llamaservice.createUser(this.signUpObj.name, this.signUpObj.name).subscribe((response) => {
      this.message = response.message;
      console.log(this.message)
@@ -47,7 +50,6 @@ export class LoginComponent {
   }
 
   onLogin() {
-    debugger;
     const localUsers = localStorage.getItem('angular17users');
     if (localUsers != null) {
       const users = JSON.parse(localUsers);
