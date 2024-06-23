@@ -34,8 +34,8 @@ export class SelectFromMultiplecharComponent {
     private sharedService: SharedService
   ) {}
   onChat() {
-    this.sharedService.changeAnime("Martin");
-    this.llamaservice.createAnime('Martin', 'Martin').subscribe(
+    this.sharedService.changeAnime("Shijuka");
+    this.llamaservice.createAnime('Shijuka', 'Shijuka').subscribe(
       (response) => {
         this.message = response.message;
         console.log(this.message);
@@ -49,19 +49,20 @@ export class SelectFromMultiplecharComponent {
   }
   character = [
     {
-      name: 'Martin',
-      image: '../assets/anime/character_1/img2.jpeg',
-      Desc: '  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.',
+      
+      name: 'Shijuka,24',
+      image: '../assets/anime/character_1/posed_image_3.png',
+      Desc: '  Shizuka is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
     },
     {
-      name: 'Ani',
-      image: '../assets/anime/character_1/img2.jpeg',
-      Desc: '  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.',
+      name: 'Ania, 30',
+      image: '../assets/anime/character_1/ComfyUI_00082_.png',
+      Desc: '  Ania is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
     },
     {
-      name: 'Shivoka',
-      image: '../assets/anime/character_1/img2.jpeg',
-      Desc: '  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.',
+      name: 'Shivoka, 22',
+      image: '../assets/anime/character_1/ComfyUI_00080_.png',
+      Desc: '  Ania is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
     },
   ];
 }
