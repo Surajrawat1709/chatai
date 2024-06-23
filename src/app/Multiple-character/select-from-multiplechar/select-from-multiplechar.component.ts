@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { LlamaChatApiService } from '../../llama-chat-api.service';
+import { SharedService } from '../../shared.service';
 @Component({
   selector: 'app-select-from-multiplechar',
   standalone: true,
@@ -27,23 +28,42 @@ import { LlamaChatApiService } from '../../llama-chat-api.service';
 export class SelectFromMultiplecharComponent {
   message: string = '';
   charObj: Character = new Character();
-  constructor(private router: Router,private llamaservice: LlamaChatApiService) {}
-  onLogin() {
-    this.llamaservice.createAnime("Suraj", "Martin").subscribe((response) => {
-      this.message = response.message;
-      console.log(this.message)
-    }, error => {
-      console.error('Error creating user:', error);
-      this.message = 'An error occurred while creating the user.';
-    });
+  constructor(
+    private router: Router,
+    private llamaservice: LlamaChatApiService,
+    private sharedService: SharedService
+  ) {}
+  onChat() {
+    this.sharedService.changeAnime("Martin");
+    this.llamaservice.createAnime('Martin', 'Martin').subscribe(
+      (response) => {
+        this.message = response.message;
+        console.log(this.message);
+      },
+      (error) => {
+        console.error('Error creating user:', error);
+        this.message = 'An error occurred while creating the user.';
+      }
+    );
     this.router.navigateByUrl('/selectVisuals');
   }
   character = [
-    { name: "Martin", image: "../assets/anime/character_1/img2.jpeg", Desc:"  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him." },
-    { name: "Ani", image: "../assets/anime/character_1/img2.jpeg" ,Desc:"  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him." },
-    { name: "Shivoka", image: "../assets/anime/character_1/img2.jpeg",Desc:"  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him." },
+    {
+      name: 'Martin',
+      image: '../assets/anime/character_1/img2.jpeg',
+      Desc: '  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.',
+    },
+    {
+      name: 'Ani',
+      image: '../assets/anime/character_1/img2.jpeg',
+      Desc: '  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.',
+    },
+    {
+      name: 'Shivoka',
+      image: '../assets/anime/character_1/img2.jpeg',
+      Desc: '  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.',
+    },
   ];
-
 }
 export class Character {
   name: string;

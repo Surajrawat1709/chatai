@@ -29,11 +29,12 @@ export class MessageComponent  {
   console = console
 
   data1: string = '';
-
+  animeData:string='';
   constructor(private llamaservice: LlamaChatApiService,private sharedService: SharedService) {}
 
   ngOnInit() {
     this.sharedService.currentData.subscribe(data1 => this.data1 = data1);
+    this.sharedService.currentAnimeData.subscribe(animeData => this.animeData = animeData);
   }
 
   getMessage($event: string){
@@ -42,7 +43,7 @@ export class MessageComponent  {
       this.data = [...this.data].concat(messageObject)
       this.loading = true
 
-      this.llamaservice.QueryPrompt(this.data1,"Suraj",$event).subscribe(
+      this.llamaservice.QueryPrompt(this.data1,this.animeData,$event).subscribe(
         (response: any):void => {
           messageObject = this.createMessage(response.response, MESSAGE_TYPE.ASSISTANT)
           this.data = [...this.data].concat(messageObject)

@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { LlamaChatApiService } from '../../llama-chat-api.service';
-
+import { SharedService } from '../../shared.service';
 @Component({
   selector: 'app-select-character',
   standalone: true,
@@ -27,12 +27,21 @@ import { LlamaChatApiService } from '../../llama-chat-api.service';
 })
 export class SelectCharacterComponent {
   message: string = '';
+  data1: string = '';
+ animeData:string ='';
   constructor(
     private router: Router,
-    private llamaservice: LlamaChatApiService
+    private llamaservice: LlamaChatApiService,private sharedService: SharedService
   ) {}
-  onLogin() {
-    this.llamaservice.createChat('Suraj', 'Suraj', 'promt').subscribe(
+
+
+  ngOnInit() {
+    this.sharedService.currentData.subscribe(data1 => this.data1 = data1);
+    this.sharedService.currentAnimeData.subscribe(animeData => this.animeData = animeData);
+  }
+
+  onChat() {
+    this.llamaservice.createChat(this.data1, this.animeData, 'promt').subscribe(
       (response) => {
         this.message = response.response;
         console.log(this.message);
