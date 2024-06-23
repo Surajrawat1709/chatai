@@ -7,19 +7,19 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './login-layout.component.html',
-  styleUrl: './login-layout.component.scss'
+  styleUrl: './login-layout.component.scss',
 })
 export class LoginLayoutComponent {
   loggedUser: any;
   constructor(private router: Router) {
     const localUser = localStorage.getItem('loggedUser');
-    if(localUser != null) {
+    if (localUser != null) {
       this.loggedUser = JSON.parse(localUser);
     }
   }
 
   onLogoff() {
     localStorage.removeItem('loggedUser');
-    this.router.navigateByUrl('/login')
-}
+    this.router.navigateByUrl('/login');
+  }
 }

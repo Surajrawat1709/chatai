@@ -1,53 +1,45 @@
 .container {
   position: relative;
-}
-.message-panel-container {
 
-z-index: 2;
-  padding: 12px;
-  font-family: "Roboto";
-  font-weight: 300;
-height: 548px;
-  overflow: auto;
-  padding: 0px;
-  background-color: #161748;
+  .message-panel-container-cloud {
+    z-index: 2;
+    padding: 1px;
+    font-family: "Roboto";
+    font-weight: 300;
+    height: 345px;
+    overflow: auto;
+    padding: 0px;
+    background-image: url("S:/Projects/ChatDiff/Frontend/chatdif/src/assets/Backgroud/back8.jfif");
 
-  // background-image: url("S:/Projects/ChatDiff/Frontend/chatdif/src/assets/Backgroud/back3.jpg");
-
-.message-panel-container::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
-   }
-
-  .no-message-container {
-    background-color: palegreen;
-    width: fit-content;
-    padding: 6px;
-    border-radius: 6px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  .message-inner-container {
-    display: flex;
-    width: 400px;
-    border: 10px;
-    border-color: blue;
-    margin-top: 16px;
-    margin-left: 10px;
-   // background-color: blue;
-
-    .message-container {
-      display: flex;
+    .no-message-container-cloud {
+      background-color: #e0e0e0;
       width: fit-content;
-    //  background-color: palegreen;
+      padding: 6px;
+      border-radius: 6px;
+      margin-right: auto;
+      margin-left: auto;
+    }
 
-      .assistant-message-style{
-        background-color:  #ffb766;
+    .message-inner-container-cloud {
+      display: flex;
+
+    }
+
+    .message-container-cloud {
+      display: flex;
+        width: 420px;
+        height: fit-content;
+        padding-top: 10px;
+
+
+      .assistant-message-style {
+        // background-color:#ffb766;
+        position: relative;
+        display: inline-block;
         width: fit-content;
         padding: 12px;
         border-radius: 6px;
         margin-bottom: 16px;
-        max-width: 1000px;
         margin-right: 10px;
         margin-top: 0px;
       }
@@ -63,34 +55,170 @@ height: 548px;
         background-size: cover;
         border: 1px solid #e0e0e0;
       }
-
-      .message {
-         background-color:#ffb766;
+      .message-cloud {
+        background-color: hsl(255deg 50% 40%);
         width: fit-content;
         padding: 12px;
         border-radius: 6px;
-
         margin-bottom: 16px;
         max-width: 1000px;
         margin-right: 10px;
         margin-top: 0px;
       }
-    }
-  }
+      /* Yoinked from CodePen, but improved the animation
+so that it is smooth among other more minor things */
 
-  .loading-icon {
-    position: fixed;
-    bottom: 70px;
-    right: 30px;
-  }
+.codepen-button {
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+  color: white;
+  margin: 0 auto;
+  position: relative;
+  text-decoration: none;
+  font-weight: 200;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 3px;
+  isolation: isolate;
 }
- .image-panel-container{
+
+.codepen-button::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* Adjust as needed */
-  height: 0%; /* Adjust as needed */
-  z-index: 1; /* Ensure it's above the message panel */
-  /* Additional styles if needed */
- }
+  width: 400%;
+  height: 100%;
+  background: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
+  background-size: 25% 100%;
+  animation: an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop .75s linear infinite;
+  animation-play-state: paused;
+  translate: -5% 0%;
+  transition: translate 0.25s ease-out;
+}
 
+.codepen-button:hover::before {
+  animation-play-state: running;
+  transition-duration: 0.75s;
+  translate: 0% 0%;
+}
+
+@keyframes an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop {
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+.codepen-button span {
+  position: relative;
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  background: #000;
+  border-radius: 3px;
+  height: 100%;
+}
+    }
+
+    .loading-icon {
+      position: fixed;
+      bottom: 70px;
+      right: 30px;
+    }
+  }
+
+  .message-panel-container {
+    z-index: 2;
+    padding: 12px;
+    font-family: "Roboto";
+    font-weight: 300;
+    height: 204px;
+    overflow: auto;
+    padding: 0px;
+    background-image: url("S:/Projects/ChatDiff/Frontend/chatdif/src/assets/Backgroud/back8.jfif");
+
+    // background-color: #161748;
+
+    // background-image: url("S:/Projects/ChatDiff/Frontend/chatdif/src/assets/Backgroud/back3.jpg");
+
+    .message-panel-container::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
+
+    .no-message-container {
+      // background-color: palegreen;
+      width: fit-content;
+      padding: 6px;
+      border-radius: 6px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .message-inner-container {
+      display: flex;
+      width: 400px;
+      border: 10px;
+      border-color: blue;
+      margin-top: 16px;
+      margin-left: 10px;
+      // background-color: blue;
+
+      .message-container {
+        display: flex;
+        width: fit-content;
+        //  background-color: palegreen;
+
+        .assistant-message-style {
+          //   background-color:  #ffb766;
+          width: fit-content;
+          padding: 12px;
+          border-radius: 6px;
+          margin-bottom: 16px;
+          max-width: 1000px;
+          margin-right: 10px;
+          margin-top: 0px;
+        }
+
+        .avatar {
+          background-color: #e0e0e0;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          margin-right: 10px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: 1px solid #e0e0e0;
+        }
+        .message {
+          //  background-color:#ffb766;
+          width: fit-content;
+          padding: 12px;
+          border-radius: 6px;
+          margin-bottom: 16px;
+          max-width: 1000px;
+          margin-right: 10px;
+          margin-top: 0px;
+        }
+      }
+    }
+
+    .loading-icon {
+      position: fixed;
+      bottom: 70px;
+      right: 30px;
+    }
+  }
+
+  .image-panel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4rem;
+    width: 100%; /* Adjust as needed */
+    height: 0%; /* Adjust as needed */
+    z-index: 1; /* Ensure it's above the message panel */
+    /* Additional styles if needed */
+  }
+}
