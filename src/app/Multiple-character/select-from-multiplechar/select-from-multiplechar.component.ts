@@ -28,14 +28,16 @@ import { SharedService } from '../../shared.service';
 export class SelectFromMultiplecharComponent {
   message: string = '';
   charObj: Character = new Character();
+  data1: string = '';
   constructor(
     private router: Router,
     private llamaservice: LlamaChatApiService,
     private sharedService: SharedService
   ) {}
-  onChat() {
-    this.sharedService.changeAnime("Shijuka");
-    this.llamaservice.createAnime('Shijuka', 'Shijuka').subscribe(
+  onCustomize(data: string) {
+    this.data1 = data;
+    this.sharedService.changeAnime( this.data1);
+    this.llamaservice.createAnime( this.data1, this.data1).subscribe(
       (response) => {
         this.message = response.message;
         console.log(this.message);
@@ -47,9 +49,26 @@ export class SelectFromMultiplecharComponent {
     );
     this.router.navigateByUrl('/selectVisuals');
   }
+
+  onChat(data: string) {
+    this.data1 = data;
+    this.sharedService.changeAnime( this.data1);
+    this.llamaservice.createAnime( this.data1, this.data1).subscribe(
+      (response) => {
+        this.message = response.message;
+        console.log(this.message);
+      },
+      (error) => {
+        console.error('Error creating user:', error);
+        this.message = 'An error occurred while creating the user.';
+      }
+    );
+    this.router.navigateByUrl('/chatpage');
+  }
+
   character = [
     {
-      
+
       name: 'Shijuka,24',
       image: '../assets/anime/character_1/posed_image_3.png',
       Desc: '  Shizuka is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
@@ -57,6 +76,21 @@ export class SelectFromMultiplecharComponent {
     {
       name: 'Ania, 30',
       image: '../assets/anime/character_1/ComfyUI_00082_.png',
+      Desc: '  Ania is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
+    },
+    {
+      name: 'Shivoka, 22',
+      image: '../assets/anime/character_1/ComfyUI_00080_.png',
+      Desc: '  Ania is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
+    },
+    {
+      name: 'Shivoka, 22',
+      image: '../assets/anime/character_1/ComfyUI_00080_.png',
+      Desc: '  Ania is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
+    },
+    {
+      name: 'Shivoka, 22',
+      image: '../assets/anime/character_1/ComfyUI_00080_.png',
       Desc: '  Ania is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
     },
     {

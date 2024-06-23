@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { LlamaChatApiService } from '../../llama-chat-api.service';
 import { SharedService } from '../../shared.service';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-select-character',
   standalone: true,
@@ -21,6 +23,7 @@ import { SharedService } from '../../shared.service';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    CommonModule
   ],
   templateUrl: './select-character.component.html',
   styleUrl: './select-character.component.scss',
@@ -29,6 +32,8 @@ export class SelectCharacterComponent {
   message: string = '';
   data1: string = '';
  animeData:string ='';
+ msg: string = '';
+ selectedOption: string = '';
   constructor(
     private router: Router,
     private llamaservice: LlamaChatApiService,private sharedService: SharedService
@@ -40,11 +45,15 @@ export class SelectCharacterComponent {
     this.sharedService.currentAnimeData.subscribe(animeData => this.animeData = animeData);
   }
 
-  onChat() {
-    this.llamaservice.createChat(this.data1, this.animeData, 'promt').subscribe(
+  onChat(data: string) {
+    this.msg = data;
+    this.llamaservice.createChat(this.data1, this.animeData, this.msg).subscribe(
       (response) => {
         this.message = response.response;
         console.log(this.message);
+        console.log(this.msg);
+        console.log(this.data1);
+        console.log(this.animeData);
       },
       (error) => {
         console.error('Error creating user:', error);
@@ -61,4 +70,11 @@ export class SelectCharacterComponent {
 
   favoriteClothing: string | undefined;
   clothing: string[] = ['Casual', 'Formal', 'Jeans', 'Nurse'];
+
+  images = {
+    option1:'/assets/anime/character_1/ComfyUI_00080_.png',
+    option2:  '/assets/anime/character_1/posed_image_1.png',
+    option3: '/assets/anime/character_1/ComfyUI_00082_.png',
+     option4: '/assets/anime/character_1/posed_image_2.png'
+  };
 }

@@ -30,41 +30,7 @@
   </section>
 
   <section class="message-panel-container" #scrollframe>
-    @for (message of messages; track message.id) { @if (message.sender ===
-    "user") {
-    <div class="message-inner-container" style="justify-content: flex-start">
-      <div class="message-container">
-        <!-- <div class="avatar" style="background-image: url('{{userPath}}');"></div> -->
-        <div class="message">
-          <mat-card-content>
-            <!-- <p>{{ message.content }}</p> -->
-          </mat-card-content>
-        </div>
-      </div>
-    </div>
-    } @else {
-    <div
-      class="message-inner-container"
-      style="justify-content: flex-end; margin-left: 946px"
-    >
-      <div class="message-container">
-        <div class="assistant-message-style">
-          <mat-card-content>
-            <!-- <p>{{ message.content }}</p> -->
-          </mat-card-content>
-        </div>
-        <!-- <div class="avatar" style="background-image: url('{{avatarPath}}')"></div> -->
-      </div>
-    </div>
-    } } @empty {
-    <!-- <div class="no-message-container">No Messages</div> -->
-    }
 
-    <!-- @if (loading) {
-      <div class="loading-icon">
-          <img src="../../assets/images/AI1.jpeg" width="70" />
-      </div>
-  } -->
     <audio
       #audio
       src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"

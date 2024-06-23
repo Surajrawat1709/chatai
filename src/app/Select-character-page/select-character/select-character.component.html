@@ -2,11 +2,18 @@
   <mat-card class="generate-image">
     <div class="card">
 
-        <img
-        mat-card-image
-        style="height: 100%; width: 100%; margin: 1px 10px 0px 4px;  border-radius: 2rem;"
-        src="../assets/anime/character_1/posed_image_3.png"
-        alt="Photo of a Shiba Inu"/>
+        <div *ngIf="favoriteView">
+          <img *ngIf="favoriteView === 'Front'"  mat-card-image
+          style="height: 100%; width: 100%; margin: 1px 10px 0px 4px;  border-radius: 2rem;" [src]="images.option1" alt="Option 1 Image">
+          <img *ngIf="favoriteView === 'Back'"  mat-card-image
+          style="height: 100%; width: 100%; margin: 1px 10px 0px 4px;  border-radius: 2rem;" [src]="images.option2" alt="Option 2 Image">
+          <img *ngIf="favoriteView === 'Side'"  mat-card-image
+          style="height: 100%; width: 100%; margin: 1px 10px 0px 4px;  border-radius: 2rem;" [src]="images.option3" alt="Option 3 Image">
+          <img *ngIf="favoriteView === 'Closeup'"  mat-card-image
+          style="height: 100%; width: 100%; margin: 1px 10px 0px 4px;  border-radius: 2rem;" [src]="images.option4" alt="Option 4 Image">
+
+        </div>
+      
 
       <div class="title">
         <span>Shijuka, 24</span>
@@ -17,7 +24,7 @@
 
       </div>
       <div class="action">
-        <button class="cart-button" (click)="onChat()">
+        <button class="cart-button" (click)="onChat('suraj')">
         Let's chat
         </button>
       </div>
@@ -75,10 +82,12 @@
     </mat-radio-group>
 
     <div class="action1">
-      <button class="cart-button1" (click)="onChat()">
+      <button class="cart-button1" (click)="onChat(message.value)">
       Let's chat
       </button>
     </div>
   </mat-card>
+  
 </body>
+
 <router-outlet></router-outlet>
