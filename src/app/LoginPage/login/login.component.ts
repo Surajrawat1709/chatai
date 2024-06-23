@@ -26,16 +26,20 @@ export class LoginComponent {
   ) {}
 
   onRegister() {
-   alert('Registration Success');
-   this.sharedService.changeData(this.signUpObj.name);
-   //console.log(this.signUpObj.name);
-   this.llamaservice.createUser(this.signUpObj.name, this.signUpObj.name).subscribe((response) => {
-     this.message = response.message;
-     console.log(this.message)
-   }, error => {
-     console.error('Error creating user:', error);
-     this.message = 'An error occurred while creating the user.';
-   });
+    alert('Registration Success');
+    this.sharedService.changeData(this.signUpObj.name);
+    this.llamaservice
+      .createUser(this.signUpObj.name, this.signUpObj.name)
+      .subscribe(
+        (response) => {
+          this.message = response.message;
+          console.log(this.message);
+        },
+        (error) => {
+          console.error('Error creating user:', error);
+          this.message = 'An error occurred while creating the user.';
+        }
+      );
     const localUser = localStorage.getItem('angular17users');
     if (localUser != null) {
       const users = JSON.parse(localUser);
@@ -46,7 +50,6 @@ export class LoginComponent {
       users.push(this.signUpObj);
       localStorage.setItem('angular17users', JSON.stringify(users));
     }
-
   }
 
   onLogin() {
