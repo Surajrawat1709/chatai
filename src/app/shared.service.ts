@@ -19,4 +19,11 @@ export class SharedService {
   changeAnime(data:string){
     this.dataAnimeSource.next(data);
   }
+
+  private sendImage = new BehaviorSubject<string>('default value');
+  currentImageData = this.dataAnimeSource.asObservable();
+
+  changeImage(data:string){
+    this.dataAnimeSource.next(data);
+  }
 }

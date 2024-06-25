@@ -5,7 +5,7 @@
 
   .slides {
     width: 50%;
-    height:537px;
+    height:503px;
     border-radius: 10px;
     padding: auto;
     overflow: hidden;
@@ -48,7 +48,7 @@
         height: 20px;
         border-radius: 50%;
         background-color: #fff;
-        display: inline-block;
+        display: none;
         margin: 0px 5px;
         cursor: pointer;
         transition: background-color 0.5s ease-in-out;
@@ -59,4 +59,24 @@
       }
     }
   }
+}
+.action1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1px;
+}
+.cart-button1 {
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+
+  padding: 0.5rem;
+  width: 100%;
+ // background-image: var(--bg-linear);
+background-color: yellowgreen;
+
 }

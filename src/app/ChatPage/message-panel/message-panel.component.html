@@ -1,6 +1,7 @@
 <section class="container">
   <section class="message-panel-container-cloud" #scrollframe>
-    @for (message of messages; track message.id) { @if ( "user") {
+    @for (message of messages; track message.id) {
+      @if ( "user") {
     <div
       class="message-inner-container-cloud"
       style="justify-content: flex-start"
@@ -30,7 +31,6 @@
   </section>
 
   <section class="message-panel-container" #scrollframe>
-
     <audio
       #audio
       src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"
@@ -64,9 +64,15 @@
         [indicatorsVisible]="true"
         [animationSpeed]="50"
         [slides]="slides"
-        [autoPlay]="true"
+        [autoPlay]="false"
         [autoPlaySpeed]="5000"
+        #imageSlider
       ></app-image-slider>
+    </div>
+    <div class="action">
+      <button class="cart-button" (click)="onChat()">
+     Generate Image
+      </button>
     </div>
   </section>
 </section>

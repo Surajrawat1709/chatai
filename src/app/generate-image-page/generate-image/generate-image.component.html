@@ -1,19 +1,21 @@
 <body>
   <mat-card class="generate-image">
     <div class="card">
-        <div *ngIf="loading" class="loader-circle-9">
-          Loading
-          <span></span>
 
-      </div>
-      <div *ngIf="!loading">
-        <img
-          mat-card-image
-          style="height: 100%; width: 100%; margin: 1px 10px 0px 4px; border-radius: 2rem;"
-          [src]="currentImage"
-          alt="Current Image"
-        />
-      </div>
+      <div *ngIf="loading" class="loader-circle-9">
+        Loading
+        <span></span>
+
+    </div>
+    <div *ngIf="!loading">
+      <img
+        mat-card-image
+        style="height: 100%; width: 100%; margin: 1px 10px 0px 4px; border-radius: 2rem;"
+        [src]="currentImage"
+        alt="Current Image"
+      />
+    </div>
+
       <div class="title">
         <span>Shijuka, 24</span>
       </div>
@@ -32,10 +34,6 @@
 
   <mat-card class="choose-character">
     <mat-card-header>
-
-      <!-- <mat-card-title class="text-format"
-        >Generate chat for your favourite character</mat-card-title
-      > -->
       <div class="e-card playing">
         <div class="image"></div>
 
@@ -48,19 +46,19 @@
 
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="icon">
       </svg><br>
-      Customize chat 
+     Generate Image
       <br>
         </div>
       </div>
     </mat-card-header>
     <form class="example-form">
       <mat-form-field class="example-full-width">
-        <mat-label>Please, let me know what do you want to talk about.</mat-label>
+        <mat-label>Please, let me know what type of image you want to generate.</mat-label>
         <input
           matInput
           #message
           maxlength="30"
-          placeholder="Enjoying a refreshing drink on a hot summer day at the beach."
+          placeholder="A hot girl on a summer day at the beach."
         />
         <mat-hint align="start"><strong>Enter Prompt</strong> </mat-hint>
         <mat-hint align="end">{{ message.value.length }} / 30</mat-hint>
@@ -70,7 +68,7 @@
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
-      [(ngModel)]="favoriteView" (click)="generateImg()">
+      [(ngModel)]="favoriteView" >
       @for (view of view; track view) {
         <mat-radio-button class="example-radio-button" style="color: #d9d9d9" [value]="view">{{view}}</mat-radio-button>
       }
@@ -81,7 +79,7 @@
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
-      [(ngModel)]="favoriteClothing" (click)="generateImg()">
+      [(ngModel)]="favoriteClothing" >
       @for (clothing of clothing; track clothing) {
         <mat-radio-button class="example-radio-button" style="color: #d9d9d9" [value]="clothing">{{clothing}}</mat-radio-button>
       }
@@ -90,15 +88,15 @@
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group" style="margin-bottom: 25px;"
-      [(ngModel)]="favoriteAction" (click)="generateImg()">
+      [(ngModel)]="favoriteAction"  >
       @for (action of action; track action) {
         <mat-radio-button class="example-radio-button"  [value]="action">{{action}}</mat-radio-button>
       }
     </mat-radio-group>
 
     <div class="action1">
-      <button class="cart-button1" (click)="onChat(message.value)">
-      Let's chat
+      <button class="cart-button1" (click)="generateImg()">
+     Generate Image
       </button>
     </div>
   </mat-card>

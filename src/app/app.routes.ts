@@ -6,6 +6,8 @@ import { MessagePanelComponent } from './ChatPage/message-panel/message-panel.co
 import { SelectCharacterMainComponent } from './Select-character-page/select-character-main/select-character-main.component';
 import { MessageComponent as MCP, MessageComponent } from './ChatPage/message/message.component';
 import { SelectMultiplecharMainComponent } from './Multiple-character/select-multiplechar-main/select-multiplechar-main.component';
+import { FrontpageComponent } from './Frontpages/frontpage/frontpage.component';
+import { GenerateImageMainComponent } from './generate-image-page/generate-image-main/generate-image-main.component';
 export const routes: Routes = [{
   path:'',
   redirectTo : 'login',
@@ -26,6 +28,10 @@ export const routes: Routes = [{
 {
   path:'selectCharacter',
   component:SelectMultiplecharMainComponent
+},
+{
+  path:'generateImg',
+  component:GenerateImageMainComponent
 },
 {
   path: 'chatpagepankaj',

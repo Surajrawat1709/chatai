@@ -11,37 +11,36 @@ import { LlamaChatApiService } from '../../llama-chat-api.service';
 import { SharedService } from '../../shared.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @Component({
-  selector: 'app-select-character',
+  selector: 'app-generate-image',
   standalone: true,
-  imports: [
-    MatButtonModule,
+  imports: [   MatButtonModule,
     MatCardModule,
     RouterOutlet,
     RouterModule,
     MatRadioModule,
     MatInputModule,
     MatFormFieldModule,
-    MatProgressSpinnerModule,
     FormsModule,
-    CommonModule
-  ],
-  templateUrl: './select-character.component.html',
-  styleUrl: './select-character.component.scss',
+    CommonModule],
+  templateUrl: './generate-image.component.html',
+  styleUrl: './generate-image.component.scss'
 })
-export class SelectCharacterComponent {
+export class GenerateImageComponent {
   message: string = '';
   data1: string = '';
  animeData:string ='';
  msg: string = '';
  selectedOption: string = '';
- currentImage: string='/assets/anime/character_1/market_traditional_standing.png';
  loading: boolean = false;
+ currentImage: string = '/assets/anime/character_1/market_traditional_standing.png'; // Default image
+
+
   constructor(
     private router: Router,
-    private llamaservice: LlamaChatApiService,private sharedService: SharedService,
-
+    private llamaservice: LlamaChatApiService,
+    private sharedService: SharedService,
   ) {}
 
   ngOnInit() {
@@ -64,17 +63,8 @@ export class SelectCharacterComponent {
         this.message = 'An error occurred while creating the user.';
       }
     );
-    this.sharedService.changeImage(this.currentImage);
     this.router.navigateByUrl('/chatpage');
   }
-
-
-  // generateImg() {
-  //   const randomIndex = Math.floor(Math.random() * this.view.length);
-  //   this.favoriteView = this.view[randomIndex];
-  // }
-
-
   favoriteView: string ='Home';
   favoriteClothing: string ='Standing';
   favoriteAction: string ='Casual';
@@ -96,7 +86,6 @@ export class SelectCharacterComponent {
     this.loading = true; // Start loading
     setTimeout(() => {
    if (this.favoriteView && this.favoriteClothing && this.favoriteAction) {
-
      this.currentImage = `/assets/Dress_c1/${this.favoriteView.toLowerCase()}_${this.favoriteClothing.toLowerCase()}_${this.favoriteAction.toLowerCase()}.png`;
 //this.currentImage='/assets/anime/character_1/school_dress_close.png';
   // alert(this.currentImage)
@@ -116,7 +105,8 @@ export class SelectCharacterComponent {
       console.log(this.currentImage);
      }
 
-  },8000);
+  },9000);
+
 }
 checkImageExists(url: string): Promise<boolean> {
   return new Promise((resolve) => {
@@ -126,11 +116,12 @@ checkImageExists(url: string): Promise<boolean> {
     img.src = url;
   });
 }
-  images = {
-    option1:'/assets/anime/character_1/ComfyUI_00080_.png',
-    option2:  '/assets/anime/character_1/posed_image_1.png',
-    option3: '/assets/anime/character_1/ComfyUI_00082_.png',
-     option4: '/assets/anime/character_1/posed_image_2.png',
+  images: {[key: string]: string} = {
+    Home:'/assets/anime/character_1/ComfyUI_00080_.png',
+    School:  '/assets/anime/character_1/posed_image_1.png',
+    Party: '/assets/anime/character_1/ComfyUI_00082_.png',
+    Bar: '/assets/anime/character_1/posed_image_2.png',
      default:'/assets/anime/character_1/posed_image_2.png'
   };
 }
+
