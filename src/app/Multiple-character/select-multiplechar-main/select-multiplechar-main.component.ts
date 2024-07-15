@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../ChatPage/header/header.component';
 import { SelectFromMultiplecharComponent } from '../select-from-multiplechar/select-from-multiplechar.component';
+
 @Component({
   selector: 'app-select-multiplechar-main',
   standalone: true,

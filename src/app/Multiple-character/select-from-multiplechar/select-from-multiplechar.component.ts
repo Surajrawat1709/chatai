@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router, RouterModule } from '@angular/router';
@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { LlamaChatApiService } from '../../llama-chat-api.service';
+import { SharedService } from '../../shared.service';
+import { CharacterConstants } from '../../utility/constants';
 @Component({
   selector: 'app-select-from-multiplechar',
   standalone: true,
@@ -24,35 +26,58 @@ import { LlamaChatApiService } from '../../llama-chat-api.service';
   templateUrl: './select-from-multiplechar.component.html',
   styleUrl: './select-from-multiplechar.component.scss',
 })
-export class SelectFromMultiplecharComponent {
+export class SelectFromMultiplecharComponent  implements AfterViewInit  {
   message: string = '';
-  charObj: Character = new Character();
-  constructor(private router: Router,private llamaservice: LlamaChatApiService) {}
-  onLogin() {
-    this.llamaservice.createAnime("Suraj", "Martin").subscribe((response) => {
-      this.message = response.message;
-      console.log(this.message)
-    }, error => {
-      console.error('Error creating user:', error);
-      this.message = 'An error occurred while creating the user.';
-    });
+
+  data1: string = '';
+  @ViewChild('descData') descData!: ElementRef;
+
+
+  constructor(
+    private router: Router,
+    private llamaservice: LlamaChatApiService,
+    private sharedService: SharedService
+  ) {}
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
+  }
+  onCustomize(data: string) {
+    this.data1 = data;
+    this.sharedService.changeAnime( this.data1);
+    this.llamaservice.createAnime( this.data1, this.data1,this.descData.nativeElement.textContent).subscribe(
+      (response) => {
+        this.message = response.message;
+        console.log(this.message);
+      },
+      (error) => {
+        console.error('Error creating user:', error);
+        this.message = 'An error occurred while creating the user.';
+      }
+    );
     this.router.navigateByUrl('/selectVisuals');
   }
-  character = [
-    { name: "Martin", image: "../assets/anime/character_1/img2.jpeg", Desc:"  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him." },
-    { name: "Ani", image: "../assets/anime/character_1/img2.jpeg" ,Desc:"  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him." },
-    { name: "Shivoka", image: "../assets/anime/character_1/img2.jpeg",Desc:"  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is ready to talk to you. Select Cht now and go chat with him." },
-  ];
+  character = CharacterConstants.CHARACTERS;
 
-}
-export class Character {
-  name: string;
-  image: string;
-  Desc: string;
-
-  constructor() {
-    this.name = '';
-    this.image = '';
-    this.Desc = '';
+  onChat(data: string) {
+    this.data1 = data;
+    this.sharedService.changeAnime( this.data1);
+    const selectedCharacter = this.character.find((char) => char.name.includes(data));
+    if (selectedCharacter) {
+    this.llamaservice.createAnime( this.data1, this.data1,this.data1).subscribe(
+      (response) => {
+        this.message = response.message;
+        console.log(this.message);
+      },
+      (error) => {
+        console.error('Error creating user:', error);
+        this.message = 'An error occurred while creating the user.';
+      }
+    );
+    this.sharedService.changeImage(selectedCharacter.image);
+    this.router.navigateByUrl('/chatpage');
+  }else {
+    console.error('Character not found');
+    this.message = 'Character not found.';
+  }
   }
 }

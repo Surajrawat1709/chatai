@@ -8,7 +8,25 @@
 "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
   </script>
 </head>
-<section class="user-input-container">
+<body>
+<div class="input-container">
+  <input type="text"  [(ngModel)]="message"  class="input-textfield" placeholder="What's on your mind?"  onfocus="this.value=''"
+  (keyup)="onKeyUp($event)">
+  <button class="button" (click)="sendMessage()">
+    <span > send </span>
+  </button>
+  <script>
+    $(document).ready(()=>{
+        $('#myBtn').click(()=>{
+            $('#parent').
+            children().remove();
+        });
+    });
+</script>
+</div>
+</body>
+
+<!-- <section class="user-input-container">
   <input
     class="input-textfield"
     [(ngModel)]="message"
@@ -27,4 +45,4 @@
         });
     });
 </script>
-</section>
+</section> -->

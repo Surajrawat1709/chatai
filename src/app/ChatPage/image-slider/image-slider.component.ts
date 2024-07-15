@@ -21,6 +21,7 @@ export class ImageSliderComponent implements OnInit {
    //faArrowLeft = faArrowLeft;
   hidden = false;
 
+
   next() {
     let currentSlide = (this.currentSlide + 1) % this.slides.length;
     this.jumpToSlide(currentSlide);

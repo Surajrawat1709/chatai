@@ -1,24 +1,29 @@
 <body>
   <mat-card class="generate-image">
     <div class="card">
+        <div *ngIf="loading" class="loader-circle-9">
+          Loading
+          <span></span>
 
+      </div>
+      <div *ngIf="!loading">
         <img
-        mat-card-image
-        style="height: 100%; width: 100%; margin: 1px 10px 0px 4px;  border-radius: 2rem;"
-        src="../assets/anime/character_1/img2.jpeg"
-        alt="Photo of a Shiba Inu"/>
-
+          mat-card-image
+          style="height: 100%; width: 100%; margin: 1px 10px 0px 4px; border-radius: 2rem;"
+          [src]="currentImage"
+          alt="Current Image"
+        />
+      </div>
       <div class="title">
-        <span>Martin, 24</span>
+        <span>Shijuka, 24</span>
       </div>
       <div class="size">
-        <span>  Martin is a handsome boy of age 24. Working as a fashion model, he is
-        ready to talk to you. Select Cht now and go chat with him.  Martin is a handsome boy of age 24. Working as a fashion model, he is
-        ready to talk to you. Select Cht now and go chat with him. </span>
+        <span> Shizuka is a smart and kind neighbourhood girl. She is, unlike Nobita, a quick-witted and very studious child. Shizuka loves to bathe and does it several times.',
+         </span>
 
       </div>
       <div class="action">
-        <button class="cart-button" (click)="onLogin()">
+        <button class="cart-button" (click)="onChat('suraj')">
         Let's chat
         </button>
       </div>
@@ -27,14 +32,30 @@
 
   <mat-card class="choose-character">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title class="text-format"
+
+      <!-- <mat-card-title class="text-format"
         >Generate chat for your favourite character</mat-card-title
-      >
+      > -->
+      <div class="e-card playing">
+        <div class="image"></div>
+
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+
+
+            <div class="infotop">
+
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="icon">
+      </svg><br>
+      Customize chat 
+      <br>
+        </div>
+      </div>
     </mat-card-header>
     <form class="example-form">
       <mat-form-field class="example-full-width">
-        <mat-label>Enter the scene in which you want to chat</mat-label>
+        <mat-label>Please, let me know what do you want to talk about.</mat-label>
         <input
           matInput
           #message
@@ -45,11 +66,11 @@
         <mat-hint align="end">{{ message.value.length }} / 30</mat-hint>
       </mat-form-field>
     </form>
-    <label  class="text-format" style="margin-top: 60px;" id="example-radio-group-label" >Pick your favorite view</label>
+    <label  class="text-format" style="margin-top: 60px;" id="example-radio-group-label" >Pick your favorite scene</label>
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
-      [(ngModel)]="favoriteView">
+      [(ngModel)]="favoriteView" (click)="generateImg()">
       @for (view of view; track view) {
         <mat-radio-button class="example-radio-button" style="color: #d9d9d9" [value]="view">{{view}}</mat-radio-button>
       }
@@ -60,7 +81,7 @@
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
-      [(ngModel)]="favoriteClothing">
+      [(ngModel)]="favoriteClothing" (click)="generateImg()">
       @for (clothing of clothing; track clothing) {
         <mat-radio-button class="example-radio-button" style="color: #d9d9d9" [value]="clothing">{{clothing}}</mat-radio-button>
       }
@@ -69,17 +90,19 @@
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group" style="margin-bottom: 25px;"
-      [(ngModel)]="favouriteAction">
+      [(ngModel)]="favoriteAction" (click)="generateImg()">
       @for (action of action; track action) {
         <mat-radio-button class="example-radio-button"  [value]="action">{{action}}</mat-radio-button>
       }
     </mat-radio-group>
 
     <div class="action1">
-      <button class="cart-button1" (click)="onLogin()">
+      <button class="cart-button1" (click)="onChat(message.value)">
       Let's chat
       </button>
     </div>
   </mat-card>
+
 </body>
+
 <router-outlet></router-outlet>

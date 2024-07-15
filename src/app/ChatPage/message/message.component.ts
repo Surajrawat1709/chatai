@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { MessagePanelComponent } from '../message-panel/message-panel.component';
 import { LLamaAIResponse, Message, MESSAGE_TYPE} from '../../utility/constants';
@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 import { LlamaChatApiService } from '../../llama-chat-api.service';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-message',
@@ -20,40 +21,41 @@ import { LlamaChatApiService } from '../../llama-chat-api.service';
   templateUrl: './message.component.html',
   styleUrl: './message.component.scss'
 })
-export class MessageComponent {
+export class MessageComponent  {
   title = 'exploring-angular';
   data: Message[] = [];
   loading: boolean = false
-  res_from_api: string = "hello"
+  res_from_api: string = "hello pankf"
   console = console
 
-  constructor(private llamaservice: LlamaChatApiService) {}
+  data1: string = '';
+  animeData:string='';
+  constructor(private llamaservice: LlamaChatApiService,private sharedService: SharedService) {}
 
-//   getMessage($event:string){
-//     if(!this.loading){
-//       let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
-//       this.data = [...this.data].concat(messageObject)
-//       this.loading = true
-//     this.llamaservice.getInitResponse().subscribe(
-//       (response:any):void=>{
-//         this.console.log(response.msg);
-//       }
-//     )
-//   }
-// }
+  ngOnInit() {
+    this.sharedService.currentData.subscribe(data1 => this.data1 = data1);
+    this.sharedService.currentAnimeData.subscribe(animeData => this.animeData = animeData);
+  }
 
   getMessage($event: string){
+    this.llamaservice.getInitResponse().subscribe(
+      (response: any):void => {
+        this.console.log("hello")
+        this.console.log(response.msg)
+      }
+    )
     if(!this.loading){
       let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
       this.data = [...this.data].concat(messageObject)
       this.loading = true
-
-      this.llamaservice.QueryPrompt($event).subscribe(
+      console.log(this.animeData);
+      this.llamaservice.QueryPrompt(this.data1,this.animeData,$event).subscribe(
         (response: any):void => {
           messageObject = this.createMessage(response.response, MESSAGE_TYPE.ASSISTANT)
           this.data = [...this.data].concat(messageObject)
           this.loading = false;
-          this.res_from_api = response.response
+          this.res_from_api = response.response;
+          console.log(this.animeData);
         }
       )
     }
