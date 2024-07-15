@@ -41,7 +41,6 @@ export class SelectCharacterComponent {
   constructor(
     private router: Router,
     private llamaservice: LlamaChatApiService,private sharedService: SharedService,
-
   ) {}
 
   ngOnInit() {
@@ -116,7 +115,7 @@ export class SelectCharacterComponent {
       console.log(this.currentImage);
      }
 
-  },8000);
+  },.1000);
 }
 checkImageExists(url: string): Promise<boolean> {
   return new Promise((resolve) => {

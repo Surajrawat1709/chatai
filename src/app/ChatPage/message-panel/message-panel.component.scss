@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  height: 83.7vh;
+  height: 88.8%;
 
   .message-panel-container-cloud {
     z-index: 2;
@@ -10,14 +10,33 @@
     height: 100%;
     overflow: auto;
     padding: 0px;
-    background-color: #111111;
+    --color: rgba(0, 115, 19, 0.3);
+    background-color: #191a1a;
     background-image: linear-gradient(
-      32deg,
-      rgba(8, 8, 8, 0.74) 30px,
-      transparent
-    );
-    background-size: 60px 60px;
-    background-position: -5px -5px;
+        180deg,
+        transparent 24%,
+        var(--color) 25%,
+        var(--color) 26%,
+        transparent 27%,
+        transparent 74%,
+        var(--color) 75%,
+        var(--color) 76%,
+        transparent 77%,
+        transparent
+      ),
+      linear-gradient(
+        45deg,
+        transparent 24%,
+        var(--color) 35%,
+        var(--color) 26%,
+        transparent 17%,
+        transparent 74%,
+        var(--color) 75%,
+        var(--color) 76%,
+        transparent 77%,
+        transparent
+      );
+    background-size: 55px 55px;
 
     .no-message-container-cloud {
       background-color: #e0e0e0;
@@ -30,18 +49,16 @@
 
     .message-inner-container-cloud {
       display: flex;
-
     }
 
     .message-container-cloud {
       display: flex;
-        width: 410px;
-        height: fit-content;
-        padding-top: 10px;
-
+      width: 410px;
+      height: fit-content;
+      padding-top: 10px;
 
       .assistant-message-style-cloud {
-         background-color:#ffb766;
+        background-color: #ffb766;
         position: relative;
         display: inline-block;
         width: fit-content;
@@ -82,8 +99,6 @@
     }
   }
 
-
-
   .image-panel-container {
     position: absolute;
     top: 0;
@@ -96,10 +111,45 @@
   }
   .action {
     display: flex;
-    align-items: center;
+    align-items:end;
     gap: 1rem;
-    margin-top: 403px;
-    margin-left: 448px;
+    margin-top: 435px;
+    margin-left: 445px;
+  }
+  .shadow__btn {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    width: 52%;
+    height:35px;
+    font-size: 17px;
+    padding: 0.8em 1.3em 0.8em 0.9em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+  }
+
+  .shadow__btn svg {
+    margin-right: 120px;
+    transform: rotate(30deg);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .shadow__btn span {
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .shadow__btn:hover svg {
+    transform: translateX(5px) rotate(90deg);
+  }
+
+  .shadow__btn:hover span {
+    transform: translateX(7px);
   }
 
   .cart-button {
@@ -107,13 +157,13 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:end;
     gap: 0.25rem;
 
     padding: 0.5rem;
     width: 52%;
-   // background-image: var(--bg-linear);
-background-color: red;
+    // background-image: var(--bg-linear);
+    background-color: red;
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--light);

@@ -48,13 +48,14 @@ export class MessageComponent  {
       let messageObject: Message = this.createMessage($event, MESSAGE_TYPE.USER)
       this.data = [...this.data].concat(messageObject)
       this.loading = true
-
+      console.log(this.animeData);
       this.llamaservice.QueryPrompt(this.data1,this.animeData,$event).subscribe(
         (response: any):void => {
           messageObject = this.createMessage(response.response, MESSAGE_TYPE.ASSISTANT)
           this.data = [...this.data].concat(messageObject)
           this.loading = false;
-          this.res_from_api = response.response
+          this.res_from_api = response.response;
+          console.log(this.animeData);
         }
       )
     }

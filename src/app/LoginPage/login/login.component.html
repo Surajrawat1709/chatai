@@ -1,3 +1,5 @@
+
+<app-header></app-header>
 <div class="parent">
   <div
     class="container"
@@ -40,29 +42,30 @@
     <div class="form-container sign-in">
       <form>
         <h1>Sign In</h1>
-        <div class="social-icons">
+        <!-- <div class="social-icons">
           <a href="#" class="icon"
             ><i class="fa-brands fa-google-plus-g"></i
           ></a>
           <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
           <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
+        </div> -->
         <span>or use your email password</span>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+          <p *ngFor="let msg of errorMsg">{{msg}}</p>
+        </div>
         <input
-          type="email"
-          name="email"
-          [(ngModel)]="loginObj.email"
-          placeholder="Email"
+        [(ngModel)]="authRequest.email"
+        type="email" class="form-control"
+         id="login" placeholder="name@example.com"
         />
         <input
-          type="password"
-          name="password"
-          [(ngModel)]="loginObj.password"
-          placeholder="Password"
+        [(ngModel)]="authRequest.password"
+        type="password" class="form-control"
+         id="password" placeholder="Password"
         />
         <a href="#">→ Forget Your Password? ←</a>
-        <button (click)="onLogin()">Sign In</button>
+        <button (click)="onLogin()"> <em class="fas fa-sign-in-alt">&nbsp;Sign in</em></button>
       </form>
     </div>
     <div class="toggle-container">
